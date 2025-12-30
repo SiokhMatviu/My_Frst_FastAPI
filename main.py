@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from database import create_tables, delete_tables
@@ -14,7 +13,3 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(router_tasks)
-
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", reload=True)
