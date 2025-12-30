@@ -14,7 +14,6 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
-app.include_router(router_tasks)
 
 
 origins = [
@@ -30,6 +29,9 @@ app.add_middleware(
     allow_methods=["*"],          # GET, POST, PUT, DELETE
     allow_headers=["*"],          # Authorization, Content-Type
 )
+
+
+app.include_router(router_tasks)
 
 
 if __name__ == "__main__":
